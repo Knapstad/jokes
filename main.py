@@ -12,8 +12,11 @@ def open_joke_file(file_path: str) -> List:
 def push_joke(joke: Dict, hook: str):
     requests.post(hook, json.dumps(joke))
 
-if __name__ == "__main__":
+def main(*args, **kwargs):
     joke = random.choice(open_joke_file("jokes.json"))[1]
     joke = {"text": joke.replace("\n","\n\n")}
-    push_joke(joke, "yourhook")
+    push_joke(joke, pbi_hook)
 
+
+if __name__ == "__main__":
+    main()
